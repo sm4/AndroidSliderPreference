@@ -8,6 +8,7 @@ package net.jayschwa.android.preference;
 
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.os.Parcelable;
 import android.preference.DialogPreference;
 import android.util.AttributeSet;
 import android.view.View;
@@ -145,5 +146,15 @@ public class SliderPreference extends DialogPreference {
 		super.onDialogClosed(positiveResult);
 	}
 
+	@Override
+	protected Parcelable onSaveInstanceState() {
+		if (getDialog() != null) {
+			getDialog().cancel();
+		}
+		return super.onSaveInstanceState();
+	}
+
+	
+	
 	// TODO: Save and restore preference state.
 }
